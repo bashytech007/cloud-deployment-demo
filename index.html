@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Deployment Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .info {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .deployment-type {
+            font-weight: bold;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Cloud Deployment Demo</h1>
+        <div class="info">
+            <p><span class="deployment-type">Deployment Model:</span> <span id="deployment-model">Loading...</span></p>
+            <p><span class="deployment-type">Server Time:</span> <span id="server-time">Loading...</span></p>
+            <p><span class="deployment-type">Application Status:</span> Running successfully!</p>
+        </div>
+        <h2>About This Application</h2>
+        <p>This sample web application demonstrates deployment across different cloud service models:</p>
+        <ul>
+            <li><strong>IaaS (Infrastructure as a Service):</strong> Azure Virtual Machine</li>
+            <li><strong>PaaS (Platform as a Service):</strong> Azure App Service</li>
+        </ul>
+        <p>The same application code runs on both platforms, showcasing the flexibility of cloud deployment models.</p>
+    </div>
+    
+    <script>
+        // Update deployment model based on URL or environment
+        document.getElementById('deployment-model').textContent = 
+            window.location.hostname.includes('azurewebsites.net') ? 'PaaS (Azure App Service)' : 'IaaS (Azure Virtual Machine)';
+        
+        // Update server time
+        document.getElementById('server-time').textContent = new Date().toLocaleString();
+        
+        // Refresh time every second
+        setInterval(() => {
+            document.getElementById('server-time').textContent = new Date().toLocaleString();
+        }, 1000);
+    </script>
+</body>
+</html>
